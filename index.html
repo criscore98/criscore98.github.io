@@ -1,0 +1,617 @@
+<html>
+    <head>
+        <title>Axie Team Banner Generator</title>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116189657-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-116189657-1');
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js" integrity="sha384-xdEN7ies9cZm/l8HslPhg0lGG/uQuIW2KQ/EVt71QFjarfJWY95fAMqbqw/1C2rX" crossorigin="anonymous"></script>
+        <script src="js/html2canvas.js"></script>
+        <script src="pixi-spine.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&display=swap" rel="stylesheet"> 
+        <link href="main.css" type="text/css" rel="stylesheet">
+
+        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+        <meta content="utf-8" http-equiv="encoding">
+    </head>
+    <body>
+        <div id="headerDiv"></div><br/>
+        <div id="pageContainer">
+            <div class="container">
+                <div class="row ml-0">
+                    <input id="axieID" class="form-inline form-control-sm col-1" placeholder="Axie ID" value="2595"/>
+                    <button type="button" class="btn btn-secondary btn-sm" onclick="getAxie(1)">Get Axie Image</button>&nbsp;
+                    <span class="pt-2">Animaton:&nbsp;</span><select class="" id="animationList"></select>&nbsp;
+                    <i class="material-icons btn" style="font-size:24px" onclick="togglePause();">pause_circle_outline</i>&nbsp;
+                    <a href="#" class="btn btn-secondary" id="IDButton" onclick="downloadImage(1)">First</a>
+                    
+                    <a href="#" class="btn btn-secondary" id="IDButton1" onclick="downloadImage(2)" style="margin-left: 10px;">Second</a>
+                
+                    <a href="#" class="btn btn-secondary" id="IDButton2" onclick="downloadImage(3)" style="margin-left: 10px;">Third</a>
+                </div>
+                <br/>
+                <div id="imageLoc">
+                </div>
+                <div>
+                    Press "Get Axie Image" first and wait for the image to change, then press First, Second or Third buttons.
+                </div>
+            </div>
+            <div id="teamcontainer" style="margin: 100px;">
+                <div id="priceContainer">
+                    <input type="text" id="axieTeamPrice" placeholder="Enter price here">
+                </div>
+                <div id="innerContainer">
+                    <div id="firstAxie" class="axieInfoCard">
+                        <div class="axieImgContainer">
+                            <img id="firstAxieImg" src="" class="axieImg">
+                        </div>
+                        <div class="axieStats">
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M8 12.394s-4.98-1.626-4.98-5.152A2.72 2.72 0 018 5.73a2.72 2.72 0 014.98 1.512c0 3.526-4.98 5.152-4.98 5.152" fill="#3ac279"></path></g></svg>
+                            <p id="HP_1" class="axieTxtStats" style="margin-top:16"></p>
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M9.488 6.85h.96c.16 0 .253.184.157.312L6.56 12.666c-.126.159-.381.047-.349-.154l.697-3.96a.195.195 0 00-.194-.23h-.808a.198.198 0 01-.194-.231l.958-5.009a.197.197 0 01.193-.16h3.586c.135 0 .23.134.183.262L9.305 6.581a.197.197 0 00.183.268" fill="#f7ac0a"></path></g></svg>
+                            <p id="Speed_1" class="axieTxtStats" style="margin-top:16"></p>
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M11.374 9.463c-.093.308-.15 3.015-.394 3.205-.246.19-2.677-.59-2.98-.59-.303 0-2.734.78-2.98.59-.245-.19-.302-2.897-.395-3.205-.093-.307-1.54-2.533-1.445-2.84.093-.307 2.488-1.201 2.735-1.39.244-.19 1.782-2.346 2.085-2.346.302 0 1.84 2.155 2.085 2.345.246.19 2.642 1.084 2.735 1.391.095.307-1.352 2.533-1.446 2.84" fill="#6a3ac2"></path></g></svg>
+                            <p id="Skill_1" class="axieTxtStats" style="margin-top:16"></p>
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M11.177 9.139c0 .132-.009.261-.023.39-.176 1.959-1.5 3.263-3.336 3.263-1.781 0-3.017-1.232-3.33-3.106a3.407 3.407 0 01-.046-.547l.012-.229c.043-.771.39-1.577.909-2.087l.363-.358.024.509c.012.236.128.458.337.642.107.094.365.195.676.195.161 0 .314-.028.442-.08a.596.596 0 00.397-.532c.023-.325-.107-.486-.272-.69-.184-.226-.413-.507-.534-1.13-.15-.778.287-1.514 1.23-2.073l.482-.285-.146.54a.995.995 0 00-.032.213c-.02.567.444 1.273 1.417 2.157 1.242 1.13 1.419 2.14 1.423 2.98l.007.228z" fill="#c23a3a"></path></g></svg>
+                            <p id="Morale_1" class="axieTxtStats" style="margin-top:16"></p>
+                        </div>
+                        <div id="firstAxieCards" class="cardsContainer">
+
+                        </div>
+                    </div>
+                    <div id="secondAxie" class="axieInfoCard">
+                        <div class="axieImgContainer">
+                            <img id="secondAxieImg" src="" class="axieImg">
+                        </div>
+                        <div class="axieStats">
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M8 12.394s-4.98-1.626-4.98-5.152A2.72 2.72 0 018 5.73a2.72 2.72 0 014.98 1.512c0 3.526-4.98 5.152-4.98 5.152" fill="#3ac279"></path></g></svg>
+                            <p id="HP_2" class="axieTxtStats" style="margin-top:16"></p>
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M9.488 6.85h.96c.16 0 .253.184.157.312L6.56 12.666c-.126.159-.381.047-.349-.154l.697-3.96a.195.195 0 00-.194-.23h-.808a.198.198 0 01-.194-.231l.958-5.009a.197.197 0 01.193-.16h3.586c.135 0 .23.134.183.262L9.305 6.581a.197.197 0 00.183.268" fill="#f7ac0a"></path></g></svg>
+                            <p id="Speed_2" class="axieTxtStats" style="margin-top:16"></p>
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M11.374 9.463c-.093.308-.15 3.015-.394 3.205-.246.19-2.677-.59-2.98-.59-.303 0-2.734.78-2.98.59-.245-.19-.302-2.897-.395-3.205-.093-.307-1.54-2.533-1.445-2.84.093-.307 2.488-1.201 2.735-1.39.244-.19 1.782-2.346 2.085-2.346.302 0 1.84 2.155 2.085 2.345.246.19 2.642 1.084 2.735 1.391.095.307-1.352 2.533-1.446 2.84" fill="#6a3ac2"></path></g></svg>
+                            <p id="Skill_2" class="axieTxtStats" style="margin-top:16"></p>
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M11.177 9.139c0 .132-.009.261-.023.39-.176 1.959-1.5 3.263-3.336 3.263-1.781 0-3.017-1.232-3.33-3.106a3.407 3.407 0 01-.046-.547l.012-.229c.043-.771.39-1.577.909-2.087l.363-.358.024.509c.012.236.128.458.337.642.107.094.365.195.676.195.161 0 .314-.028.442-.08a.596.596 0 00.397-.532c.023-.325-.107-.486-.272-.69-.184-.226-.413-.507-.534-1.13-.15-.778.287-1.514 1.23-2.073l.482-.285-.146.54a.995.995 0 00-.032.213c-.02.567.444 1.273 1.417 2.157 1.242 1.13 1.419 2.14 1.423 2.98l.007.228z" fill="#c23a3a"></path></g></svg>
+                            <p id="Morale_2" class="axieTxtStats" style="margin-top:16"></p>
+                        </div>
+                        <div id="secondAxieCards" class="cardsContainer">
+
+                        </div>
+                    </div>
+                    <div id="thirdAxie" class="axieInfoCard">
+                        <div class="axieImgContainer">
+                            <img id="thirdAxieImg" src="" class="axieImg">
+                        </div>
+                        <div class="axieStats">
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M8 12.394s-4.98-1.626-4.98-5.152A2.72 2.72 0 018 5.73a2.72 2.72 0 014.98 1.512c0 3.526-4.98 5.152-4.98 5.152" fill="#3ac279"></path></g></svg>
+                            <p id="HP_3" class="axieTxtStats" style="margin-top:16"></p>
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M9.488 6.85h.96c.16 0 .253.184.157.312L6.56 12.666c-.126.159-.381.047-.349-.154l.697-3.96a.195.195 0 00-.194-.23h-.808a.198.198 0 01-.194-.231l.958-5.009a.197.197 0 01.193-.16h3.586c.135 0 .23.134.183.262L9.305 6.581a.197.197 0 00.183.268" fill="#f7ac0a"></path></g></svg>
+                            <p id="Speed_3" class="axieTxtStats" style="margin-top:16"></p>
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M11.374 9.463c-.093.308-.15 3.015-.394 3.205-.246.19-2.677-.59-2.98-.59-.303 0-2.734.78-2.98.59-.245-.19-.302-2.897-.395-3.205-.093-.307-1.54-2.533-1.445-2.84.093-.307 2.488-1.201 2.735-1.39.244-.19 1.782-2.346 2.085-2.346.302 0 1.84 2.155 2.085 2.345.246.19 2.642 1.084 2.735 1.391.095.307-1.352 2.533-1.446 2.84" fill="#6a3ac2"></path></g></svg>
+                            <p id="Skill_3" class="axieTxtStats" style="margin-top:16"></p>
+                            <svg style="fill: var(--color-gray-3);" width="32" height="32" viewBox="0 0 16 16"><g><rect width="16" height="16" rx="4"></rect><path d="M11.177 9.139c0 .132-.009.261-.023.39-.176 1.959-1.5 3.263-3.336 3.263-1.781 0-3.017-1.232-3.33-3.106a3.407 3.407 0 01-.046-.547l.012-.229c.043-.771.39-1.577.909-2.087l.363-.358.024.509c.012.236.128.458.337.642.107.094.365.195.676.195.161 0 .314-.028.442-.08a.596.596 0 00.397-.532c.023-.325-.107-.486-.272-.69-.184-.226-.413-.507-.534-1.13-.15-.778.287-1.514 1.23-2.073l.482-.285-.146.54a.995.995 0 00-.032.213c-.02.567.444 1.273 1.417 2.157 1.242 1.13 1.419 2.14 1.423 2.98l.007.228z" fill="#c23a3a"></path></g></svg>
+                            <p id="Morale_3" class="axieTxtStats" style="margin-top:16"></p>
+                        </div>
+                        <div id="thirdAxieCards" class="cardsContainer">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+    <script>
+        var spine;
+        var axieID = -1;
+        var oldID;
+        var axieData;
+        var axieImage;
+        var currAxieNo;
+        var cardData = {
+            "Shelter": "aquatic-back-02",
+            "Scale Dart_1": "aquatic-back-04",
+            "Swift Escape": "aquatic-back-06",
+            "Shipwreck": "aquatic-back-08",
+            "Aqua Vitality": "aquatic-back-10",
+            "Spinal Tap": "aquatic-back-12",
+            "Shell Jab": "aquatic-horn-02",
+            "Deep Sea Gore": "aquatic-horn-04",
+            "Clam Slash": "aquatic-horn-06",
+            "Aquaponics": "aquatic-horn-08",
+            "Hero's Bane": "aquatic-horn-10",
+            "Star Shuriken": "aquatic-horn-12",
+            "Angry Lam": "aquatic-mouth-02",
+            "Swallow": "aquatic-mouth-04",
+            "Fish Hook": "aquatic-mouth-08",
+            "Crimson Water": "aquatic-mouth-10",
+            "Upstream Swim": "aquatic-tail-02",
+            "Tail Slap": "aquatic-tail-04",
+            "Black Bubble": "aquatic-tail-06",
+            "Water Sphere": "aquatic-tail-08",
+            "Flanking Smack": "aquatic-tail-10",
+            "Chitin Jump": "aquatic-tail-12",
+            "Single Combat": "beast-back-02",
+            "Heroic Reward": "beast-back-04",
+            "Nitro Leap": "beast-back-06",
+            "Revenge Arrow": "beast-back-08",
+            "Woodman Power": "beast-back-10",
+            "Juggling Balls": "beast-back-12",
+            "Branch Charge": "beast-horn-02",
+            "Ivory Stab": "beast-horn-04",
+            "Merry Legion": "beast-horn-06",
+            "Sugar Rush": "beast-horn-08",
+            "Sinister Strike": "beast-horn-10",
+            "Acrobatic": "beast-horn-12",
+            "Nut Crack": "beast-mouth-02",
+            "Piercing Sound": "beast-mouth-04",
+            "Death Mark": "beast-mouth-08",
+            "Self Rally": "beast-mouth-10",
+            "Luna Absorb": "beast-tail-02",
+            "Night Steal": "beast-tail-04",
+            "Rampant Howl": "beast-tail-06",
+            "Hare Dagger": "beast-tail-08",
+            "Nut Throw": "beast-tail-10",
+            "Gerbil Jump": "beast-tail-12",
+            "Balloon Pop": "bird-back-02",
+            "Heart Break": "bird-back-04",
+            "Ill-omened": "bird-back-06",
+            "Blackmail": "bird-back-08",
+            "Patient Hunter": "bird-back-10",
+            "Triple Threat": "bird-back-12",
+            "Eggbomb": "bird-horn-02",
+            "Cockadoodledoo": "bird-horn-04",
+            "Air Force One": "bird-horn-06",
+            "Headshot": "bird-horn-08",
+            "Smart Shot": "bird-horn-10",
+            "Feather Lunge": "bird-horn-12",
+            "Soothing Song": "bird-mouth-02",
+            "Peace Treaty": "bird-mouth-04",
+            "Insectivere": "bird-mouth-08",
+            "Dark Swoop": "bird-mouth-10",
+            "Early Bird": "bird-tail-02",
+            "Sunder Armor": "bird-tail-04",
+            "Risky Feather": "bird-tail-06",
+            "Puffy Smack": "bird-tail-08",
+            "Cool Breeze": "bird-tail-10",
+            "All-out Shot": "bird-tail-12",
+            "Sticky Goo": "bug-back-02",
+            "Barb Strike": "bug-back-04",
+            "Bug Noise": "bug-back-06",
+            "Bug Splat": "bug-back-08",
+            "Scarab Curse": "bug-back-10",
+            "Buzzing Wind": "bug-back-12",
+            "Mystic Rush": "bug-horn-02",
+            "Bug Signal": "bug-horn-04",
+            "Grub Surprise": "bug-horn-06",
+            "Dull Grip": "bug-horn-08",
+            "Third Glance": "bug-horn-10",
+            "Disguise": "bug-horn-12",
+            "Blood Taste": "bug-mouth-02",
+            "Sunder Claw": "bug-mouth-04",
+            "Terror Chomp": "bug-mouth-08",
+            "Mite Bite": "bug-mouth-10",
+            "Chemical Warfare": "bug-tail-02",
+            "Twin Needle": "bug-tail-04",
+            "Anesthetic Bait": "bug-tail-06",
+            "Numbing Lecretion": "bug-tail-08",
+            "Grub Explode": "bug-tail-10",
+            "Allergic Reaction": "bug-tail-12",
+            "Turnip Rocket": "plant-back-02",
+            "Shroom's Grace": "plant-back-04",
+            "Cleanse Scent": "plant-back-06",
+            "Aqua Stock": "plant-back-08",
+            "Refresh": "plant-back-10",
+            "October Treat": "plant-back-12",
+            "Bamboo Clan": "plant-horn-02",
+            "Wooden Stab": "plant-horn-04",
+            "Healing Aroma": "plant-horn-06",
+            "Sweet Party": "plant-horn-08",
+            "Prickly Trap": "plant-horn-10",
+            "Seed Bullet": "plant-horn-12",
+            "Vegetal Bite": "plant-mouth-02",
+            "Drain Bite": "plant-mouth-04",
+            "Vegan Diet": "plant-mouth-08",
+            "Forest Spirit": "plant-mouth-10",
+            "Carrot Hammer": "plant-tail-02",
+            "Cattail Slap": "plant-tail-04",
+            "Leek Leak": "plant-tail-06",
+            "Gas Unleash": "plant-tail-08",
+            "Aqua Deflect": "plant-tail-10",
+            "Spicy Surprise": "plant-tail-12",
+            "Ivory Chop": "reptile-back-02",
+            "Spike Throw": "reptile-back-04",
+            "Vine Dagger": "reptile-back-06",
+            "Bulkwark": "reptile-back-08",
+            "Slippery Shield": "reptile-back-10",
+            "Nile Strike": "reptile-back-12",
+            "Poo Fling": "reptile-horn-02",
+            "Scaly Lunge": "reptile-horn-04",
+            "Surprise Invasion": "reptile-horn-06",
+            "Tiny Catapult": "reptile-horn-08",
+            "Disarm": "reptile-horn-10",
+            "Overgrow Keratin": "reptile-horn-12",
+            "Sneaky Raid": "reptile-mouth-02",
+            "Kotaro bite": "reptile-mouth-04",
+            "Why So Serious": "reptile-mouth-08",
+            "Chomp": "reptile-mouth-10",
+            "Critical Escape": "reptile-tail-02",
+            "Scale Dart_2": "reptile-tail-04",
+            "Tiny Swing": "reptile-tail-06",
+            "Jar Barrage": "reptile-tail-08",
+            "Neuro Toxin": "reptile-tail-10",
+            "Venom Spray": "reptile-tail-12"
+        }
+
+        function captureTeamImage(){
+            html2canvas(document.querySelector("#teamContainer")).then(function(canvas) {
+                document.body.appendChild(canvas);
+            });
+        }
+
+        function togglePause() {
+            PIXI.spine.Spine.globalAutoUpdate = !PIXI.spine.Spine.globalAutoUpdate;
+        }
+
+        function getAxieStats(axieNo){
+            currAxieNo = axieNo;
+            $.ajax({
+                type: "POST",
+                url: "https://axieinfinity.com/graphql-server-v2/graphql",
+                operation: "GetAxieDetail",
+                data: {
+                        variables: {
+                            axieId: axieID
+                        },
+                    query: "query GetAxieDetail($axieId: ID!) {\n  axie(axieId: $axieId) {\n    ...AxieDetail\n    __typename\n  }\n}\n\nfragment AxieDetail on Axie {\n  id\n  image\n  class\n  chain\n  name\n  genes\n  owner\n  birthDate\n  bodyShape\n  class\n  sireId\n  sireClass\n  matronId\n  matronClass\n  stage\n  title\n  breedCount\n  level\n  figure {\n    atlas\n    model\n    image\n    __typename\n  }\n  parts {\n    ...AxiePart\n    __typename\n  }\n  stats {\n    ...AxieStats\n    __typename\n  }\n  auction {\n    ...AxieAuction\n    __typename\n  }\n  ownerProfile {\n    name\n    __typename\n  }\n  battleInfo {\n    ...AxieBattleInfo\n    __typename\n  }\n  children {\n    id\n    name\n    class\n    image\n    title\n    stage\n    __typename\n  }\n  __typename\n}\n\nfragment AxieBattleInfo on AxieBattleInfo {\n  banned\n  banUntil\n  level\n  __typename\n}\n\nfragment AxiePart on AxiePart {\n  id\n  name\n  class\n  type\n  specialGenes\n  stage\n  abilities {\n    ...AxieCardAbility\n    __typename\n  }\n  __typename\n}\n\nfragment AxieCardAbility on AxieCardAbility {\n  id\n  name\n  attack\n  defense\n  energy\n  description\n  backgroundUrl\n  effectIconUrl\n  __typename\n}\n\nfragment AxieStats on AxieStats {\n  hp\n  speed\n  skill\n  morale\n  __typename\n}\n\nfragment AxieAuction on Auction {\n  startingPrice\n  endingPrice\n  startingTimestamp\n  endingTimestamp\n  duration\n  timeLeft\n  currentPrice\n  currentPriceUSD\n  suggestedPrice\n  seller\n  listingIndex\n  state\n  __typename\n}\n",
+                },
+                success: function(data){
+                    axieData = data;
+                    //document.getElementById("stats").innerHTML = "HP: "+ axieData["data"].axie.stats.hp + " Morale: " + axieData["data"].axie.stats.morale + " Skill: " + axieData["data"].axie.stats.skill + " Speed: " + axieData["data"].axie.stats.speed;
+                    axieCards = axieData.data.axie.parts;
+                    axieStatsNames = [
+                        ["HP_1", "Morale_1", "Skill_1", "Speed_1"], 
+                        ["HP_2", "Morale_2", "Skill_2", "Speed_2"],
+                        ["HP_3", "Morale_3", "Skill_3", "Speed_3"],
+                        ];
+                    
+                    if(currAxieNo == 1){
+                        axieCount = "firstAxieCards";
+                        axieStatsCount = axieStatsNames[0];
+                    }
+                    else if(currAxieNo == 2){
+                        axieCount = "secondAxieCards";
+                        axieStatsCount = axieStatsNames[1];
+                    }
+                    else if(currAxieNo == 3){
+                        axieCount = "thirdAxieCards";
+                        axieStatsCount = axieStatsNames[2];
+                    }
+
+                    document.getElementById(axieStatsCount[0]).innerHTML = axieData["data"].axie.stats.hp + " "; 
+                    document.getElementById(axieStatsCount[1]).innerHTML = axieData["data"].axie.stats.morale + " "; 
+                    document.getElementById(axieStatsCount[2]).innerHTML = axieData["data"].axie.stats.skill + " ";
+                    document.getElementById(axieStatsCount[3]).innerHTML = axieData["data"].axie.stats.speed + " ";
+                    
+                    document.getElementById(axieCount).innerHTML = "";
+                    axieCards.forEach(cardParser);
+                },
+            });
+                
+        }
+
+        function cardParser(part){
+            if (part.abilities.length == 1){
+
+                var abilityName;
+                var axieCount;
+                abilityName = part.abilities[0].name;
+
+                if(currAxieNo == 1){
+                    axieCount = "firstAxieCards";
+                }
+                else if(currAxieNo == 2){
+                    axieCount = "secondAxieCards";
+                }
+                else if(currAxieNo == 3){
+                    axieCount = "thirdAxieCards";
+                }
+
+                //Check for Scale Dart class
+                if(abilityName == "Scale Dart"){
+                    if(axieData.data.axie.class == "Reptile"){
+                        abilityName = "Scale Dart_2"
+                    }
+                    else{
+                        abilityName = "Scale Dart_1"
+                    }
+                }
+                
+                document.getElementById(axieCount).innerHTML += "<div class='eachCardContainer' ><img class='cardImg' src='cards/" + cardData["" + abilityName] + ".webp'></div>"
+            }
+        }
+
+        function downloadImage(axieNo) {
+
+            var button = document.getElementById('IDButton');
+            let canvas = document.getElementById("canvas");
+            let dataURL = app.renderer.extract.canvas(app.stage).toDataURL();
+            var axieCount;
+            //button.href = dataURL;
+
+            getAxieStats(axieNo);
+
+            if(axieNo == 1){
+                axieCount = "firstAxieImg";
+            }
+            else if(axieNo == 2){
+                axieCount = "secondAxieImg";
+            }
+            else if(axieNo == 3){
+                axieCount = "thirdAxieImg";
+            }
+
+
+            axieImage = dataURL;
+            document.getElementById(axieCount).src = axieImage;
+            //button.download = axieID + ".png";
+        }
+
+        function init() {
+            app = new PIXI.Application(2048, 1024, {backgroundColor : 0xffffff /*,  transparent: true*/ });
+            app.view.id = "canvas";
+            app.view.style.height = 480;
+            app.view.style.border = "1px solid #d9d9d9";
+            document.getElementById("imageLoc").appendChild(app.view);
+        }
+
+        function getAxie(axieNo) {
+            oldID = axieID;
+            axieID = parseInt($("#axieID").val());
+            if (!axieID) {
+                alert("bad axie ID");
+                return;
+            }
+            if (oldID == axieID) return;
+            console.log(axieID);
+
+
+            atlasURL = "https://storage.googleapis.com/assets.axieinfinity.com/axies/" + axieID + "/axie/axie.atlas";
+            //atlasURL = "https://storage.googleapis.com/assets.axieinfinity.com/axies/" + axieID + "/petite/petite.atlas";
+            //imageURL =  data["figure"]["images"][imageName];
+            //imageURL =  data["figure"]["axie"]["image"];
+            imageURL = "https://storage.googleapis.com/assets.axieinfinity.com/axies/" + axieID + "/axie/axie.png";
+            //imageURL = "https://storage.googleapis.com/assets.axieinfinity.com/axies/" + axieID + "/petite/petite.png";
+            //modelURL = data["figure"]["axie"]["spineModel"];
+            modelURL = "https://storage.googleapis.com/assets.axieinfinity.com/axies/" + axieID + "/axie/axie.json";
+            //modelURL = "https://storage.googleapis.com/assets.axieinfinity.com/axies/" + axieID + "/petite/petite.json";
+
+//atlasURL = "https://axieinfinity.com/assets/models/ab19de2b119e811ae576b581ebb8d60d.atlas"
+//imageURL = "https://axieinfinity.com/assets/models/fe8e753a148b171a91580dc5ac45e4a1.png"
+//modelURL = "https://axieinfinity.com/assets/models/473c8a72f4c0747b7851eba14118307b.json"
+//imageName = "kotaro.png"
+//no CORS headers
+
+            /*
+            //more data intensive, but fixes CORS problems (mainly in testing)
+            let breakCache = "?" + escape(new Date());
+            atlasURL +=  breakCache;
+            imageURL +=  breakCache;
+            modelURL +=  breakCache;
+            */
+
+            let realImageName = imageURL.slice(imageURL.lastIndexOf("/") + 1, imageURL.length);
+            PIXI.loader.reset();
+            PIXI.loader
+                .add('axie_atlas', atlasURL)
+                .add('axie_png', imageURL)
+                .load(function (loader, resources) {
+                    //cache false to circumvent server's CORS caching. Server should use Vary: Origin ? or Access-Control-Allow-Origin: *
+                    $.get({url: modelURL, dataType: "json"}, function(rawSkeletonData) {
+                        const rawAtlasData = resources['axie_atlas'].data; //your atlas file
+                        const spineAtlas = new PIXI.spine.core.TextureAtlas(rawAtlasData, function (line, callback) {
+                            //use hash name instead of name from file
+                            callback(PIXI.BaseTexture.from('axie_png'));
+                        });
+
+                        const spineAtlasLoader = new PIXI.spine.core.AtlasAttachmentLoader(spineAtlas);
+                        const spineJsonParser = new PIXI.spine.core.SkeletonJson(spineAtlasLoader);
+
+                        spineJsonParser.scale = 1;
+
+                        spineData = spineJsonParser.readSkeletonData(rawSkeletonData);
+
+                        animation = new PIXI.spine.Spine(spineData);
+
+                        animation.position.set(app.view.width/2 , app.view.height * 0.85);
+                        animation.scale.set(0.65, 0.65);
+                        animation.stateData.setMix("action/idle", "action/appear", 0.2);
+                        animation.stateData.setMix("action/appear", "action/idle", 0.2);
+
+                        animation.stateData.setMix("attack/melee/mouth-bite", "action/idle", 0.2);
+                        animation.stateData.setMix("action/idle", "attack/melee/mouth-bite", 0.2);
+
+                        if (animation.state.hasAnimation('action/idle')) {
+                            animation.state.setAnimation(0, 'action/idle', true);
+                        } else if (animation.state.hasAnimation('action/idle')) {
+                            animation.state.setAnimation(0, 'action/idle', true);
+                        }
+
+                        app.stage.removeChildren();
+                        app.stage.addChild(animation);
+                        PIXI.spine.Spine.globalAutoUpdate = true;
+                        app.start();
+                        setupUI();
+                        /*
+                            animation.state.addListener({
+                                event: function(entry, event) { console.log('event fired '+event.data+' at track' + entry.trackIndex) },
+                                complete: function(entry) { console.log('track '+entry.trackIndex+' completed '+entry.loopsCount()+' times') },
+                                start: function(entry) { console.log('animation is set at '+entry.trackIndex) },
+                                end: function(entry) { console.log('animation was ended at '+entry.trackIndex) },
+
+
+                                dispose: function(entry) { console.log('animation was disposed at '+entry.trackIndex) },
+                                interrupted: function(entry) { console.log('animation was interrupted at '+entry.trackIndex) }
+                            });
+                        */
+                    }).fail(function() {
+                        alert("Failed to get Axie info. Bad Server Config?");
+                        $("#axieID").val(oldID);
+                        axieID = oldID;
+                    });
+                });
+        }
+
+    function setupUI () {
+        var setupAnimationUI = function() {
+            var animationList = $("#animationList");
+            animationList.empty();
+            var activeAnimation = app.stage.children[0].state.tracks[0].animation.name;
+            for (var i = 0; i < spineData.animations.length; i++) {
+                var name = spineData.animations[i].name;
+                var option = $("<option></option>");
+                option.attr("value", name).text(name);
+                if (name === activeAnimation) option.attr("selected", "selected");
+                animationList.append(option);
+            }
+
+            animationList.change(function() {
+                var animationName = $("#animationList option:selected").text();
+                //skeleton.setToSetupPose();
+                PIXI.spine.Spine.globalAutoUpdate = false;
+                app.stage.children[0].state.setAnimation(0, animationName, true);
+                //animation.state.setAnimation(0, 'idle', true);
+            })
+        }
+
+        setupAnimationUI();
+    }
+
+    init();
+    getAxie();
+
+    $(document).ready(function(){
+        $.ajax({
+            url: "/header.html",
+            cache: false,
+            dataType: "html",
+            success: function(data) {
+                $("#headerDiv").html(data);
+            }
+        });
+    });
+
+    document.onkeydown = function (event) {
+        const keyName = event.key;
+        let incrementX = Math.round(app.view.width * 0.05);
+        let incrementY = Math.round(app.view.height * 0.05);
+        switch (event.keyCode) {
+            case 37:
+            case 65:
+                //alert('left');
+                let startingPositionLeft = animation.position.x;
+                //animation.position.x -= incrementX;
+                //if (animation.position.x < 0) animation.position.x = 0;
+                let tickerLeft  =  new PIXI.ticker.Ticker();
+                tickerLeft.add(function () {
+                    //console.log("loopL");
+                    animation.position.x -= 5;
+                    if (animation.position.x < 0) {
+                        animation.position.x = 0;
+                        tickerLeft.destroy();
+                    } else if(animation.position.x <= startingPositionLeft - incrementX) {
+                        tickerLeft.destroy();
+                    }
+                });
+                tickerLeft.start();
+
+                break;
+            case 38:
+            case 87:
+                //alert('up');
+                let startingPositionUp = animation.position.y;
+                let tickerUp  =  new PIXI.ticker.Ticker();
+                tickerUp.add(function () {
+                    //console.log("loopU");
+                    animation.position.y -= 5;
+                    if (animation.position.y <= 0) {
+                        animation.position.y = 0;
+                        tickerUp.destroy();
+                    } else if(animation.position.y <= startingPositionUp - incrementY) {
+                        tickerUp.destroy();
+                    }
+                });
+                tickerUp.start();
+                break;
+            case 39:
+            case 68:
+                //alert('right');
+                let startingPositionRight = animation.position.x;
+                let tickerRight  =  new PIXI.ticker.Ticker();
+                tickerRight.add(function () {
+                    //console.log("loopR");
+                    animation.position.x += 5;
+                    if (animation.position.x > app.view.width) {
+                        animation.position.x = app.view.width;
+                        tickerRight.destroy();
+                    } else if(animation.position.x >= startingPositionRight + incrementX) {
+                        tickerRight.destroy();
+                    }
+                });
+                tickerRight.start();
+                break;
+            case 40:
+            case 83:
+                //alert('down');
+                let startingPositionDown = animation.position.y;
+                let tickerDown  =  new PIXI.ticker.Ticker();
+                tickerDown.add(function () {
+                    //console.log("loopD");
+                    animation.position.y += 5;
+                    if (animation.position.y > app.view.height) {
+                        animation.position.y = app.view.height;
+                        tickerDown.destroy();
+                    } else if(animation.position.y >= startingPositionDown + incrementY) {
+                        tickerDown.destroy();
+                    }
+                });
+                tickerDown.start();
+                break;
+            case 32:
+                animation.state.setAnimation(0, 'action/appear', false);
+                animation.state.addAnimation(0, 'action/idle', true, 0);
+                /*
+                let startingPositionSpace = animation.position.y;
+                let tickerSpace  =  new PIXI.ticker.Ticker();
+                tickerSpace.add(function () {
+                    //console.log("loopR");
+                    animation.position.y -= 5;
+                    if (animation.position.y < 0) {
+                        animation.position.y = 0;
+                        tickerSpace.destroy();
+                    } else if(animation.position.y <= startingPositionSpace - incrementY) {
+                        tickerSpace.destroy();
+                    }
+                });
+                tickerSpace.start();
+                */
+                break;
+            case 88:
+                animation.state.setAnimation(0, 'attack/melee/mouth-bite', false);
+                animation.state.addAnimation(0, 'action/idle', true, 0);
+                break;
+        }
+    };
+
+    </script>
+
+</html>
